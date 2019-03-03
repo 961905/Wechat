@@ -21,7 +21,7 @@ User_t *NewUser(char *username, char *Password) {
 }
 
 void PrintUser(User_t *user) {
-    printf("username :%s password: %s WeNo: %lld",user->Username,user->Password,user->WeNo);
+    printf("username :%s password: %s WeNo: %ld\n",user->Username,user->Password,user->WeNo);
 }
 
 
