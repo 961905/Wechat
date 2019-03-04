@@ -2,13 +2,13 @@
 #include <math.h>
 main(){
 	double a,b,c,s,sum;
-	scanf("%f" "%f" "%f",a,b,c);
+	scanf("%lf" "%lf" "%lf",&a,&b,&c);
 	if(a+b>c&&a+c>b&&b+c>a){
 		s=(a+b+c)/2;
 		sum=s*(s-a)*(s-b)*(s-c);
 	    sum=sqrt(sum);
-	    printf("%.2f",sum);
+	    printf("%.2lf\n",sum);
 	}else{
-		printf("False");
+		printf("False\n");
 	}
 }
