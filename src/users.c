@@ -31,7 +31,8 @@ User_t *UsersFind(int64_t WeNo) {
     if (node == NULL){
         return NULL;
     }
-    return (User_t*)node->val;
+    User_t *user = (User_t*)node->val;
+    return user;
 }
 
 void UsersDelete(User_t *user) {
