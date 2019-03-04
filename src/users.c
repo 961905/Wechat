@@ -8,13 +8,13 @@
 
 list_t *_UserList;
 
-bool matchByWeNo(void *_WeNo, void *_user){
+int matchByWeNo(void *_WeNo, void *_user){
     int64_t WeNo = *(int64_t*)_WeNo;
     User_t *user = (User_t*)_user;
     if (user->WeNo == WeNo){
-        return true;
+        return 1;
     }
-    return false;
+    return 0;
 }
 
 void InitUsers() {
@@ -43,13 +43,7 @@ void UsersDelete(User_t *user) {
 }
 
 int UsersCount() {
-    list_iterator_t *it = list_iterator_new(_UserList,LIST_HEAD);
-    list_node_t * node;
-    int count;
-    while((node = list_iterator_next(it))){
-        count++;
-    }
-    return count;
+    return  (int)_UserList->len;
 }
 
 User_t **UserGetAll() {
