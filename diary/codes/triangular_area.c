@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <math.h>
-main(){
+int main(){
 	double a,b,c,s,sum;
 	scanf("%lf" "%lf" "%lf",&a,&b,&c);
 	if(a+b>c&&a+c>b&&b+c>a){
@@ -11,4 +11,5 @@ main(){
 	}else{
 		printf("False\n");
 	}
+	return 0;
 }
