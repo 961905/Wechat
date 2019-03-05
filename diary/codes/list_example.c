@@ -9,7 +9,7 @@ typedef struct Foo {
 }Foo ;
 
 void printFoo(Foo *foo){
-    printf("a= %d b= %d",foo->a,foo->b);
+    printf("a=%d b=%d\n",foo->a,foo->b);
 }
 
 int matchByPtr(void *a, void *b){
@@ -49,6 +49,27 @@ void testListFind(){
     }
     printFoo(fTemp);
 }
+
+void testRemoveExample(){
+    list_t *list = list_new();
+
+    Foo foo;
+    foo.b = 1;
+    foo.a = 1;
+
+    //插入
+    list_node_t*node = list_rpush(list ,list_node_new(&foo));
+    if (node->val != &foo){
+        printf("error");
+        exit(2);
+    }
+
+    //删除
+    list_remove(list,node);
+    printf("list len %d",list->len);
+}
+
 int main(){
     testListFind();
+    testRemoveExample();
 }
