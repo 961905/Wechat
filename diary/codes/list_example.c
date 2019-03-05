@@ -1,47 +1,54 @@
 
 #include <stdio.h>
 #include <list.h>
-#include <user.h>
+#include <stdio.h>
 
-
-/*
-struct Foo {
+typedef struct Foo {
     int a;
     int b;
-};
+}Foo ;
 
-int main(){
+void printFoo(Foo *foo){
+    printf("a= %d b= %d",foo->a,foo->b);
+}
+
+int matchByPtr(void *a, void *b){
+    if(a == b){
+        return 1;
+    }
+    return 0;
+}
+
+void testListFind(){
     list_t *list = list_new();
+    //指定match 函数
+    list->match = matchByPtr;
     struct Foo f;
     f.a = 1;
     f.b = 2;
-    f.sum=list_rpush(list,list_node_new(&f));
+    //加入一个节点
 
-    //....
-    //...
+    void *ptr = &f;
+    list_node_t *node  = list_node_new(ptr);
+    list_rpush(list,node);
+
+    list_node_t *result = list_find(list,&f);
+
+    //这个val 就是ptr
+    void *val = result->val;
+
+    if (val != ptr){
+        printf("error");
+        exit(2);
+    }
+
+    Foo *fTemp = (Foo*)val;
+    if (fTemp != ptr){
+        printf("error");
+        exit(2);
+    }
+    printFoo(fTemp);
 }
-
-*/
-
-
-struct F {
-    int a;
-    int b;
-    int sum;
-};
 int main(){
-    struct F f;
-    f.a=2;
-    f.b=4;
-    list_node_t *list=list_new(f.b);
-    list_rpush(list,list_node_new(&f.a));
-
-     f.sum=f.a+f.b;
-
-
-
-
-    printf("%d",f.sum);
-
-
+    testListFind();
 }
