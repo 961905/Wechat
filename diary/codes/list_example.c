@@ -34,7 +34,7 @@ int main(){
     f.a=2;
     f.b=4;
     list_node_t *list=list_new(f.b);
-    list_rpush(list,list_node_new(&f.a));
+    list_rpush(list,list_node_new(f.a));
 
      f.sum=f.a+f.b;
 
