@@ -50,7 +50,7 @@ void testListFind(){
     printFoo(fTemp);
 }
 
-void testRemoveExample(){
+void testListRemove(){
     list_t *list = list_new();
 
     Foo foo;
@@ -66,10 +66,41 @@ void testRemoveExample(){
 
     //删除
     list_remove(list,node);
-    printf("list len %d",list->len);
+    printf("list len %d\n",list->len);
+}
+
+void testListIterator(){
+    list_t *list = list_new();
+    for (int i = 0; i <10; ++i) {
+        //申请内存
+        int *num = (int*)malloc(sizeof(int));
+        //给指针赋值
+        *num = i;
+        //插入到list 里面
+        list_rpush(list,list_node_new(num));
+    }
+
+    list_iterator_t *iter = list_iterator_new(list,LIST_HEAD);
+    list_node_t *node = NULL;
+    while(1){
+        node = list_iterator_next(iter);
+        if (node == NULL){
+            //到了list尾了，遍历结束
+            break;
+        }
+        void *val = node->val;
+        //指针强制性转换
+        int *num = (int*)val;
+        printf("num %d\n",*num);
+    }
 }
 
 int main(){
+    printf("-----------testListFind--------------\n");
     testListFind();
-    testRemoveExample();
+    printf("----------testListRemove-------------\n");
+    testListRemove();
+    printf("---------testListIterator------------\n");
+    testListIterator();
+    printf("---------------------");
 }
