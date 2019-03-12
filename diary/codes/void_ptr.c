@@ -13,4 +13,5 @@ int main(){
     void *pVoid = &num;
     int *temp = (int*)pVoid;
     int num2 = *temp;
+    printf("%d",b);
 }

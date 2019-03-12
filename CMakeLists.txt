@@ -21,3 +21,5 @@ add_executable(users_test
         src/user.c)
 
 add_subdirectory(diary)
+
+
