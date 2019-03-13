@@ -2,26 +2,26 @@
 #include "users.h"
 
 int main(){
-    InitUsers();
-
+    Users_t *users = NewUsers();
     for (int i = 0; i < 10; ++i) {
         User_t *temp = NewUser("temp","world");
-        UsersAdd(temp);
+        UsersAdd(users,temp);
     }
 
     User_t *u = NewUser("hello","world");
 
-    User_t **users = UserGetAll();
+    User_t **userList = UsersGetAll(users);
 
-    for(int i = 0;users[i] != NULL;i++){
-        PrintUser(users[i]);
+    for(int i = 0;userList[i] != NULL;i++){
+        PrintUser(userList[i]);
     }
+    free(userList);
 
     printf("------------------------\n");
 
-    UsersAdd(u);
+    UsersAdd(users,u);
 
-    User_t *u2 = UsersFind(u->WeNo);
+    User_t *u2 = UsersFind(users,u->UserId);
     if (u2 == NULL){
         printf("UsersFind error");
         exit(2);
@@ -34,17 +34,17 @@ int main(){
     PrintUser(u);
     PrintUser(u2);
 
-    UsersDelete(u2);
-    if (UsersFind(u2->WeNo) != NULL){
+    UsersDelete(users,u2);
+    if (UsersFind(users,u2->UserId) != NULL){
         printf("UsersDelete error");
         exit(2);
     }
 
     printf("--------------------\n");
 
-    users = UserGetAll();
+    userList = UsersGetAll(users);
 
-    for(int i = 0;users[i] != NULL;i++){
-        PrintUser(users[i]);
+    for(int i = 0;userList[i] != NULL;i++){
+        PrintUser(userList[i]);
     }
 }

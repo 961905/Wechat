@@ -7,18 +7,22 @@
 
 #define UsernameLen 64
 #define PasswordLen 64
+
+typedef int UserId_t;
+
 typedef struct User {
     char Username [UsernameLen] ;
     char Password [PasswordLen] ;
-    int64_t WeNo;
+    UserId_t UserId;
     list_t *friendList;
 }User_t;
 
 User_t* NewUser(char *username ,char *Password);
 void PrintUser(User_t *user);
 
-bool UserAddFriend(User_t *user, int64_t friend);
-bool UserCheckFriend(User_t *user, int64_t friend);
+int UserAddFriend(User_t *user, UserId_t friendId);
+int UserCheckFriend(User_t *user, UserId_t friendId);
+
 int64_t *GetFriends(User_t *user);
 
 #endif //__USER__H__
