@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.2)
 project(Wechat C)
 
 set(CMAKE_C_STANDARD 11)
@@ -23,6 +23,8 @@ add_executable(users_test
         src/proto.h)
 
 add_subdirectory(diary)
+
+
 
 add_executable(server
         ${LIST_SRC}
