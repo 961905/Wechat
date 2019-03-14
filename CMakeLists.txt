@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.12)
+cmake_minimum_required(VERSION 3.2)
 project(Wechat C)
 
 set(CMAKE_C_STANDARD 11)
@@ -28,9 +28,10 @@ add_subdirectory(diary)
 
 add_executable(server
         ${LIST_SRC}
+        src/proto.c
         src/users.c
         src/user.c
         src/server.c
         src/group.c
-        src/groups.c)
-e0bb7ee9a529111fd3cadbc62f64ce9cad4615d3
+        src/groups.c
+        src/io_engine.c)

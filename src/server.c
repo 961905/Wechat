@@ -5,6 +5,7 @@
 Server_t *NewServer(ServerConfig_t ServerConfig) {
     Server_t *server =(Server_t *)malloc(sizeof(Server_t ));
     memset(server,0, sizeof(Server_t ));
+    server->ioEngine = NewIoEngine();
     server->users = NewUsers();
     server->groups = NewGroups();
 
