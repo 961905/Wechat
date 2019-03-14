@@ -26,8 +26,10 @@ add_subdirectory(diary)
 
 add_executable(server
         ${LIST_SRC}
+        src/proto.c
         src/users.c
         src/user.c
         src/server.c
         src/group.c
-        src/groups.c)
+        src/groups.c
+        src/io_engine.c)
